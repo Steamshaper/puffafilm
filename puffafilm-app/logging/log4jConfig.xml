@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%m [%-5p - %c{3} %x] [%d{MMM dd yyyy HH:mm:ss,SSS}]%n" />
+		</layout>
+	</appender>
+	<appender name="console-log" class="org.apache.log4j.RollingFileAppender">
+		<param name="MaxFileSize" value="1000KB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="File" value="logs/SystemOut.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%m [%-5p - %c{3} %x] [%d{MMM dd yyyy HH:mm:ss,SSS}]%n" />
+		</layout>
+	</appender>
+
+	<appender name="services-log" class="org.apache.log4j.RollingFileAppender">
+		<param name="MaxFileSize" value="1000KB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="File" value="logs/Services.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%m [%-5p - %c{3} %x] [%d{MMM dd yyyy HH:mm:ss,SSS}]%n" />
+		</layout>
+	</appender>
+
+	<appender name="RateBasePrediction-appender" class="org.apache.log4j.RollingFileAppender">
+		<param name="MaxFileSize" value="1000KB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="File" value="logs/RateBasePrediction.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%m [%-5p - %c{3} %x] [%d{MMM dd yyyy HH:mm:ss,SSS}]%n" />
+		</layout>
+	</appender>
+
+	<appender name="start-log" class="org.apache.log4j.RollingFileAppender">
+		<param name="MaxFileSize" value="1000KB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="File" value="logs/StartLog.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%m [%-5p - %c{3} %x] [%d{MMM dd yyyy HH:mm:ss,SSS}]%n" />
+		</layout>
+	</appender>
+	<appender name="prediction-log" class="org.apache.log4j.RollingFileAppender">
+		<param name="MaxFileSize" value="1000KB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="File" value="logs/PredictionLog.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%m [%-5p - %c{3} %x] [%d{MMM dd yyyy HH:mm:ss,SSS}]%n" />
+		</layout>
+	</appender>
+	<appender name="steamshaper-log" class="org.apache.log4j.RollingFileAppender">
+		<param name="MaxFileSize" value="1000KB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="File" value="logs/Steamshaper.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%m [%-5p - %c{3} %x] [%d{MMM dd yyyy HH:mm:ss,SSS}]%n" />
+		</layout>
+	</appender>
+	<appender name="db-loading-service" class="org.apache.log4j.RollingFileAppender">
+		<param name="MaxFileSize" value="1000KB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="File" value="logs/DBLoading.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%m [%-5p - %c{3} %x] [%d{MMM dd yyyy HH:mm:ss,SSS}]%n" />
+		</layout>
+	</appender>
+	<appender name="etl" class="org.apache.log4j.RollingFileAppender">
+		<param name="MaxFileSize" value="1000KB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="File" value="logs/etl.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%m [%-5p - %c{3} %x] [%d{MMM dd yyyy HH:mm:ss,SSS}]%n" />
+		</layout>
+	</appender>
+	<appender name="mortbay" class="org.apache.log4j.RollingFileAppender">
+		<param name="MaxFileSize" value="1000KB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="File" value="logs/mortbay.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%m [%-5p - %c{3} %x] [%d{MMM dd yyyy HH:mm:ss,SSS}]%n" />
+		</layout>
+	</appender>
+
+	<appender name="rateSwitchApp" class="org.apache.log4j.RollingFileAppender">
+		<param name="MaxFileSize" value="1000KB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="File" value="logs/rateSwitch.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%m %n" />
+		</layout>
+	</appender>
+	<appender name="cacheHits" class="org.apache.log4j.RollingFileAppender">
+		<param name="MaxFileSize" value="1000KB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="File" value="logs/cache.log" />
+		<param name="Append" value="false" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%c{3} %x - %m]%n" />
+		</layout>
+	</appender>
+	<appender name="bigErrorApp" class="org.apache.log4j.RollingFileAppender">
+		<param name="MaxFileSize" value="1000KB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="File" value="logs/bigError.log" />
+		<param name="Append" value="false" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%c{3} %x - %m]%n" />
+		</layout>
+	</appender>
+	<appender name="errorTrendApp" class="org.apache.log4j.RollingFileAppender">
+		<param name="MaxFileSize" value="1000KB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="File" value="logs/errorTrend.log" />
+		<param name="Append" value="false" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value=" %m %n" />
+		</layout>
+	</appender>
+	<logger name="errorTrend">
+		<level value="DEBUG" />
+		<appender-ref ref="errorTrendApp" />
+	</logger>
+	<logger name="bigError">
+		<level value="DEBUG" />
+		<appender-ref ref="bigErrorApp" />
+	</logger>
+	<logger name="rateSwitch">
+		<level value="DEBUG" />
+		<appender-ref ref="rateSwitchApp" />
+	</logger>
+	<logger name="org.steamshaper.ai.puffafilm.etl.loader">
+		<level value="ERROR" />
+		<appender-ref ref="etl" />
+	</logger>
+	<logger name="org.steamshaper.ai.prediction.APrediction">
+		<level value="DEBUG" />
+		<appender-ref ref="prediction-log" />
+	</logger>
+	<logger name="org.steamshaper.ai.runtime.puffafilm">
+		<level value="DEBUG" />
+		<appender-ref ref="start-log" />
+	</logger>
+	<logger name="org.mortbay.log">
+		<level value="ERROR" />
+		<appender-ref ref="mortbay" />
+	</logger>
+	<logger name="service">
+		<level value="DEBUG" />
+		<appender-ref ref="services-log" />
+		<appender-ref ref="console" />
+	</logger>
+	<logger name="org.steamshaper">
+		<level value="DEBUG" />
+		<appender-ref ref="steamshaper-log" />
+	</logger>
+	<logger name="RateBasePrediction">
+		<level value="DEBUG" />
+		<appender-ref ref="RateBasePrediction-appender" />
+	</logger>
+	<logger name="service.impl.GraphEntityCreator">
+		<level value="INFO" />
+		<appender-ref ref="db-loading-service" />
+		<appender-ref ref="console" />
+	</logger>
+
+	<logger name="org.steamshaper.ai.puffafilm.etl">
+		<level value="ERROR" />
+		<appender-ref ref="etl" />
+		<appender-ref ref="console" />
+	</logger>
+	<logger name="cache.finders">
+		<level value="ERROR" />
+		<appender-ref ref="cacheHits" />
+	</logger>
+	<root>
+		<priority value="info" />
+		<appender-ref ref="console-log" />
+	</root>
+</log4j:configuration>
