@@ -35,7 +35,7 @@ public class MultipleApproximationPrediction extends APrediction {
 	 * @see org.steamshaper.ai.prediction.APrediction#estimateRating(org.steamshaper.puffafilm.ai.node.GNMovie, org.steamshaper.puffafilm.ai.node.GNUser)
 	 */
 	@Override
-	protected Float estimateRating(GNMovie thisMovie, GNUser thisUser) {
+	protected Float estimateRating(GNMovie thisMovie, GNUser thisUser, Long timestamp) {
 		GNUserRepository gnuRepo = Help.me.getContext().getBean(
 				GNUserRepository.class);
 		GNMovieRepository gnmRepo = Help.me.getContext().getBean(

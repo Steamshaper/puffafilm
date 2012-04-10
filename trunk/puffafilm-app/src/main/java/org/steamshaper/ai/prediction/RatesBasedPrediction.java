@@ -33,7 +33,7 @@ public class RatesBasedPrediction extends APrediction {
 	Logger errTrendLog  = Logger.getLogger("errorTrend");
 
 	@Override
-	protected Float estimateRating(GNMovie thisMovie, GNUser thisUser) {
+	protected Float estimateRating(GNMovie thisMovie, GNUser thisUser, Long timestamp) {
 		errTrendLog.debug("------------------------------\t"+MaeTest.expected);
 		// Recupero i repository dal contesto
 		GNUserRepository gnuRepo = Help.me.getContext().getBean(
