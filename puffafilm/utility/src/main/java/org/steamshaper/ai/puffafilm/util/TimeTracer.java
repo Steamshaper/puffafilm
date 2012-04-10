@@ -16,7 +16,9 @@ public class TimeTracer {
 		return timestamps.remove(timestamps.size()-1).stop().toString();
 	}
 
-
+	public Object timerStop(Object message) {
+		return timestamps.remove(timestamps.size()-1).stop(message).toString();
+	}
 
 
 
@@ -40,6 +42,13 @@ public class TimeTracer {
 			this.stopTimestamp = System.currentTimeMillis();
 			return this;
 		}
+		public TimeEntry stop(Object message){
+			markerName+= "stop message ["+message.toString()+"] ";
+			this.stopTimestamp = System.currentTimeMillis();
+			return this;
+		}
+
+
 
 		@Override
 		public String toString() {
