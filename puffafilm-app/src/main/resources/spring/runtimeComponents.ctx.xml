@@ -8,7 +8,7 @@
 
 	<bean id="service-register" class="org.steamshaper.ai.runtime.ServiceRegister">
 		<property name="shouldRunOnStart" ref="service-on-start" />
-		<property name="mainThread" ref="main-program"></property>
+		<property name="mainThread" ref="main-program"/>
 		<property name="shouldRunOnExit" ref="service-on-exit" />
 
 	</bean>
@@ -45,13 +45,13 @@
 
 	<bean id="input-data-loader" class="org.steamshaper.ai.runtime.service.DataLoader">
 		<property name="name" value="Load input data from file" />
-		<property name="fileName" value="/test-3.dat"/>
-		<property name="useUserDir" value="true"/>
+		<property name="readFromArgs" value="true"/>
+		<property name="argPosition" value="0"/>
 	</bean>
 
 
 
-	<bean id="main-program" class="org.steamshaper.ai.runtime.service.MaeTest">
+	<bean id="main-program" class="org.steamshaper.ai.runtime.service.MainService">
 		<property name="name" value="MAIN PROGRAM"/>
 		<property name="dataInput" ref="input-data-loader"/>
 	</bean>

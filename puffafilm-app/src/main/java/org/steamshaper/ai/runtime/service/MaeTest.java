@@ -45,7 +45,7 @@ public class MaeTest extends AService {
 				timestamp = new Long(st.nextToken());
 				MaeTest.expected = expected;
 
-				rating = prediction.getPrediction(userOid, movieOid);
+				rating = prediction.getPrediction(userOid, movieOid,timestamp);
 				predictedRateList.add(rating);
 				expextedRateList.add(expected);
 

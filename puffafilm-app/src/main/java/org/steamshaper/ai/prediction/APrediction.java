@@ -16,7 +16,7 @@ public abstract class APrediction {
 
 	protected Logger log = Logger.getLogger(APrediction.class);
 
-	public final Float getPrediction(Long userId, Long movieId) {
+	public final Float getPrediction(Long userId, Long movieId,Long timestamp) {
 
 		log.info("Start Prediction 4 User [oid:" + userId + "] - Movie [oid:" + movieId +"]");
 		GNUserRepository gnuRepo = Help.me.getContext().getBean(
@@ -28,7 +28,7 @@ public abstract class APrediction {
 		GNMovie movie = gnmRepo.findMovieByOid(movieId);
 
 		if (user!=null && movie!=null){
-			return normalize(estimateRating(movie, user));
+			return normalize(estimateRating(movie, user, timestamp));
 		}else{
 			log.error("User or Movie unknown");
 			throw new PredictionParameterException("Parameters are not correct");
@@ -63,6 +63,6 @@ public abstract class APrediction {
 		return discretePrediction;
 	}
 
-	protected abstract Float estimateRating(GNMovie movie, GNUser user);
+	protected abstract Float estimateRating(GNMovie movie, GNUser user, Long timestamp);
 
 }

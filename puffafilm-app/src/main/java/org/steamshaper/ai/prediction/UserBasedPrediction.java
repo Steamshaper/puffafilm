@@ -11,7 +11,6 @@ import org.steamshaper.ai.prediction.struct.UserSimilarityBean;
 import org.steamshaper.ai.puffafilm.util.Help;
 import org.steamshaper.ai.puffafilm.util.TimeTracer;
 import org.steamshaper.puffafilm.ai.mapresults.CompareUsersRating;
-import org.steamshaper.puffafilm.ai.mapresults.User2UserIntersection;
 import org.steamshaper.puffafilm.ai.mapresults.UserRating;
 import org.steamshaper.puffafilm.ai.node.GNMovie;
 import org.steamshaper.puffafilm.ai.node.GNUser;
@@ -20,7 +19,7 @@ import org.steamshaper.puffafilm.ai.repository.GNUserRepository;
 
 public class UserBasedPrediction extends APrediction {
 
-	protected Float estimateRating(GNMovie movie, GNUser user) {
+	protected Float estimateRating(GNMovie movie, GNUser user, Long timestamp) {
 		GNUserRepository gnuRepo = Help.me.getContext().getBean(
 				GNUserRepository.class);
 		GNMovieRepository gnmRepo = Help.me.getContext().getBean(
@@ -43,31 +42,31 @@ public class UserBasedPrediction extends APrediction {
 //		List<User2UserIntersection> usersIntersectList = gnuRepo
 //				.IntersectCount(user, movie);
 //		System.err.println(tt.timerStop());
-		
+
 		Integer threshold = 0;
 		Map<Long, Integer> usersCount = new HashMap<Long, Integer>();
 		for (UserRating userRating : userRatings4Film) {
 			Integer count = gnuRepo.countRatedMovie(userRating.getUser());
 			usersCount.put(userRating.getUser().getId(), count);
-			
+
 			if(count>threshold){
 				threshold=count;
 			}
 		}
-		
+
 		Set<Long> userSet = new HashSet<Long>();
-		
+
 		for (UserRating userRating : userRatings4Film) {
 			if(usersCount.get(userRating.getUser().getId()) > threshold - (threshold / 30)){
 				userSet.add(userRating.getUser().getId());
 			}
 		}
 //		for (User2UserIntersection thisUser : usersCountList) {
-//			
+//
 //				if (thisUser.getIntersectionCount() > threshold - (threshold / 10)) {
 //					userSet.add(thisUser.getUserID());
-//				} 
-//			
+//				}
+//
 ////			userSet.add(thisUser.getUserID());
 //		}
 
