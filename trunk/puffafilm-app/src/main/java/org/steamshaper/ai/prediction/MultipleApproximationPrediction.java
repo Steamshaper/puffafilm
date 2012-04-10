@@ -171,11 +171,13 @@ public class MultipleApproximationPrediction extends APrediction {
 
 				log.debug("Match with GENRE [" + gs.genre().getGenre()
 						+ "] avg [" + gs.avgRating() + "]");
-				temp = reviewPrevisionCosineWeighted(startPrediction,
-						gs.avgRating());
-				temp *= reviewPrevisionCosineWeighted(1D,
-						(1 - (gs.count() / (double) ratedMovie)))
-						* (1 + (gs.count() / (double) ratedMovie));
+//				temp = reviewPrevisionCosineWeighted(startPrediction,
+//						gs.avgRating());
+//				temp *= reviewPrevisionCosineWeighted(1D,//1 - 
+//						(1 - (gs.count() / (double) ratedMovie))
+//						* (1 + (gs.count() / (double) ratedMovie)));
+				double genreFactor = 1 - ((1 - (gs.count() / (double) ratedMovie)) * (1 + (gs.count() / (double) ratedMovie)));
+				temp = reviewPrevisionCosineWeighted(startPrediction, genreFactor*gs.avgRating());
 				prediction += temp;
 				log.debug("Prediction update to \t" + prediction + "\t" + temp);
 
