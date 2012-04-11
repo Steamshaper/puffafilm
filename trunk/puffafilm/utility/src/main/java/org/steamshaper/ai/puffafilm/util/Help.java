@@ -1,7 +1,10 @@
 package org.steamshaper.ai.puffafilm.util;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashSet;
+import java.util.List;
 
 import org.neo4j.graphdb.Transaction;
 import org.neo4j.kernel.EmbeddedGraphDatabase;
@@ -198,6 +201,19 @@ public class Help {
 			return null;
 		}
 		return argsHolder[index];
+	}
+
+	public void toStoreOutput(String destination, List<String> content)
+			throws IOException {
+		StringBuilder out = new StringBuilder();
+		for (String row : content) {
+			out.append(row + "\r\n");
+		}
+		File outputFile = new File(destination);
+		FileOutputStream fos = new FileOutputStream(outputFile);
+		fos.write(out.toString().getBytes());
+		fos.flush();
+		fos.close();
 	}
 
 }
