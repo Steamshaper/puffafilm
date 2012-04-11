@@ -142,7 +142,7 @@ public class MultipleApproximationPrediction extends APrediction {
 		double prediction = (double) thisUserAvg;
 		// Parto dal voto medio dell'utente
 		double startPrediction = (double) thisUserAvg;
-
+		
 		// Metto in relazione il voto medio del film con il voto medio
 		// dell'utente
 		log.debug("Start predition:\t" + prediction);
@@ -151,7 +151,6 @@ public class MultipleApproximationPrediction extends APrediction {
 		temp = reviewPrevisionCosineWeighted(startPrediction,
 				(double) thisMovieAvg);
 		temp = Math.abs(temp) > 0.51 ? temp : 0;
-
 		prediction += temp;
 
 		log.debug("Prediction update to \t" + prediction + "\t" + temp);
@@ -171,13 +170,15 @@ public class MultipleApproximationPrediction extends APrediction {
 
 				log.debug("Match with GENRE [" + gs.genre().getGenre()
 						+ "] avg [" + gs.avgRating() + "]");
-//				temp = reviewPrevisionCosineWeighted(startPrediction,
-//						gs.avgRating());
-//				temp *= reviewPrevisionCosineWeighted(1D,//1 - 
-//						(1 - (gs.count() / (double) ratedMovie))
-//						* (1 + (gs.count() / (double) ratedMovie)));
-				double genreFactor = 1 - ((1 - (gs.count() / (double) ratedMovie)) * (1 + (gs.count() / (double) ratedMovie)));
-				temp = reviewPrevisionCosineWeighted(startPrediction, genreFactor*gs.avgRating());
+				
+				temp = reviewPrevisionCosineWeighted(startPrediction,
+						gs.avgRating());
+				
+				
+				double genreFactor = (1 - (gs.count() / (double) ratedMovie)) * (1 + (gs.count() / (double) ratedMovie));
+				temp *= reviewPrevisionCosineWeighted(1D,genreFactor);
+						
+//				temp = reviewPrevisionCosineWeighted(startPrediction, gs.avgRating()) * genreFactor ;
 				prediction += temp;
 				log.debug("Prediction update to \t" + prediction + "\t" + temp);
 

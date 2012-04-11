@@ -28,10 +28,13 @@ public abstract class APrediction {
 		GNMovie movie = gnmRepo.findMovieByOid(movieId);
 
 		if (user!=null && movie!=null){
-			return normalize(estimateRating(movie, user, timestamp));
+			Float prediction =  normalize(estimateRating(movie, user, timestamp));
+			log.info("User [oid:" + userId + "] - Movie [oid:" + movieId +"] --> Prediction: " + prediction);
+			System.err.println("User [oid:" + userId + "] - Movie [oid:" + movieId +"] --> Prediction: " + prediction);
+			return prediction;
 		}else{
 			log.error("User or Movie unknown");
-			throw new PredictionParameterException("Parameters are not correct");
+			throw new PredictionParameterException("Parameters are not correct [oid:" + userId + "] - Movie [oid:" + movieId +"]");
 		}
 	}
 
