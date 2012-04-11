@@ -142,7 +142,7 @@ public class MultipleApproximationPrediction extends APrediction {
 		double prediction = (double) thisUserAvg;
 		// Parto dal voto medio dell'utente
 		double startPrediction = (double) thisUserAvg;
-		
+
 		// Metto in relazione il voto medio del film con il voto medio
 		// dell'utente
 		log.debug("Start predition:\t" + prediction);
@@ -166,19 +166,14 @@ public class MultipleApproximationPrediction extends APrediction {
 		for (GenreStats gs : genreStats) {
 			if (genreHS.contains(gs.genre().getOidAsString())) {
 
-				// TO DO Tenere in considerazione la frequanza di apparizione
-
 				log.debug("Match with GENRE [" + gs.genre().getGenre()
 						+ "] avg [" + gs.avgRating() + "]");
-				
+
 				temp = reviewPrevisionCosineWeighted(startPrediction,
 						gs.avgRating());
-				
-				
+
 				double genreFactor = (1 - (gs.count() / (double) ratedMovie)) * (1 + (gs.count() / (double) ratedMovie));
 				temp *= reviewPrevisionCosineWeighted(1D,genreFactor);
-						
-//				temp = reviewPrevisionCosineWeighted(startPrediction, gs.avgRating()) * genreFactor ;
 				prediction += temp;
 				log.debug("Prediction update to \t" + prediction + "\t" + temp);
 

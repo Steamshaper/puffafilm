@@ -160,7 +160,7 @@ public class Help {
 
 	public boolean isRunningOnLowMemory() {
 		if ((Runtime.getRuntime().freeMemory() * 100 / Runtime.getRuntime()
-				.maxMemory()) <= 10) {
+				.maxMemory()) <= 5) {
 			System.err.println("Low Memory warning!!!");
 			return true;
 		}
@@ -214,6 +214,19 @@ public class Help {
 		fos.write(out.toString().getBytes());
 		fos.flush();
 		fos.close();
+	}
+
+	public boolean existArgForName(String argsName) {
+		if(argsName==null||"".equals(argsName)){
+			return false;
+		}
+		for(String arg : argsHolder){
+			if(argsName.equals(arg)){
+				return true;
+			}
+		}
+		return false;
+
 	}
 
 }
