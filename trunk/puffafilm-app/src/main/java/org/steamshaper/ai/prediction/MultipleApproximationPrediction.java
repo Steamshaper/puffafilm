@@ -148,7 +148,7 @@ public class MultipleApproximationPrediction extends APrediction {
 		log.debug("Start predition:\t" + prediction);
 		double temp = 0D;
 		// Correggo la previsione con il voto medio del film
-		temp = reviewPrevisionCosineWeighted(startPrediction,
+		temp = reviewWithMagicFunction(startPrediction,
 				(double) thisMovieAvg);
 		temp = Math.abs(temp) > 0.51 ? temp : 0;
 		prediction += temp;
@@ -156,7 +156,7 @@ public class MultipleApproximationPrediction extends APrediction {
 		log.debug("Prediction update to \t" + prediction + "\t" + temp);
 		// Correggo la previsione con la media dell'utente per il regista del
 		// film
-		temp = reviewPrevisionCosineWeighted(startPrediction,
+		temp = reviewWithMagicFunction(startPrediction,
 				(double) avgForDirector);
 		prediction += temp;
 
@@ -169,11 +169,11 @@ public class MultipleApproximationPrediction extends APrediction {
 				log.debug("Match with GENRE [" + gs.genre().getGenre()
 						+ "] avg [" + gs.avgRating() + "]");
 
-				temp = reviewPrevisionCosineWeighted(startPrediction,
+				temp = reviewWithMagicFunction(startPrediction,
 						gs.avgRating());
 
 				double genreFactor = (1 - (gs.count() / (double) ratedMovie)) * (1 + (gs.count() / (double) ratedMovie));
-				temp *= reviewPrevisionCosineWeighted(1D,genreFactor);
+				temp *= reviewWithMagicFunction(1D,genreFactor);
 				prediction += temp;
 				log.debug("Prediction update to \t" + prediction + "\t" + temp);
 
@@ -182,7 +182,7 @@ public class MultipleApproximationPrediction extends APrediction {
 		double actPrediction = getActorBasedPrediction(actJoinUser,
 				startPrediction);
 		if (actPrediction != 0) {
-			prediction += reviewPrevisionCosineWeighted(startPrediction,
+			prediction += reviewWithMagicFunction(startPrediction,
 					actPrediction);
 		}
 
@@ -205,7 +205,7 @@ public class MultipleApproximationPrediction extends APrediction {
 				} else {
 					break;
 				}
-				temp = reviewPrevisionCosineWeighted(prediction, rateByBuddy
+				temp = reviewWithMagicFunction(prediction, rateByBuddy
 						- userSim.avgOnCommons() + thisUserAvg);
 				temp = temp / (2 + buddyCounted);
 				prediction += temp;
@@ -216,7 +216,7 @@ public class MultipleApproximationPrediction extends APrediction {
 		if (yearStatistics != null) {
 			double yearAvg = getYearBasedPrediction(yearStatistics, year, 5);
 			if (yearAvg >= 0) {
-				temp = reviewPrevisionCosineWeighted(startPrediction, yearAvg);
+				temp = reviewWithMagicFunction(startPrediction, yearAvg);
 				temp = Math.abs(temp) > 0.20 ? temp : 0;
 				prediction += temp;
 			}
@@ -232,7 +232,7 @@ public class MultipleApproximationPrediction extends APrediction {
 	 * @param reviewfactor the reviewfactor
 	 * @return the double
 	 */
-	private double reviewPrevisionCosineWeighted(double prediction,
+	private double reviewWithMagicFunction(double prediction,
 			double reviewfactor) {
 		// Delta tra valori
 		double delta = reviewfactor - prediction;
@@ -289,7 +289,7 @@ public class MultipleApproximationPrediction extends APrediction {
 
 				// Ora prendo il film dove ha recitato l'attore che l'utente ha
 				// votato e lo comparo con quello che sto cercando di votare
-				delta += reviewPrevisionCosineWeighted(delta, aju.movieRate())
+				delta += reviewWithMagicFunction(delta, aju.movieRate())
 						* Math.sin(roleWeight);
 			}
 		}
