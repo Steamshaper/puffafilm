@@ -3,7 +3,7 @@
   <parent>
     <artifactId>puffafilm</artifactId>
     <groupId>org.steamshaper.ai</groupId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <relativePath>..</relativePath>
   </parent>
   <artifactId>etl-entity</artifactId>
@@ -16,7 +16,7 @@
   	<dependency>
   		<groupId>org.steamshaper.ai</groupId>
   		<artifactId>neo4jDB</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
+  		<version>${project.version}</version>
   	</dependency>
   </dependencies>
 

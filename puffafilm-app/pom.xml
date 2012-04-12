@@ -4,7 +4,7 @@
 
 	<groupId>org.steamshaper.ai</groupId>
 	<artifactId>puffafilm-app</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<properties>
 		<puffafilm.mainClass>org.steamshaper.ai.Puffafilm</puffafilm.mainClass>
 	</properties>
@@ -13,22 +13,22 @@
 		<dependency>
 			<groupId>org.steamshaper.ai</groupId>
 			<artifactId>etl-entity</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.steamshaper.ai</groupId>
 			<artifactId>neo4jDB</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.steamshaper.ai</groupId>
 			<artifactId>starter</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.steamshaper.ai</groupId>
 			<artifactId>utility</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 
 
@@ -100,7 +100,7 @@
 					<docencoding>UTF-8</docencoding>
 					<docfilessubdirs>true</docfilessubdirs>
 					<links>
-						<link>http://java.sun.com/j2se/1.5.0/docs/api/</link>
+						<link>http://java.sun.com/j2se/1.6.0/docs/api/</link>
 					</links>
 					<show>protected</show>
 					<source>1.5</source>

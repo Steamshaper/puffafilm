@@ -140,11 +140,11 @@
 		</layout>
 	</appender>
 	<logger name="errorTrend">
-		<level value="DEBUG" />
+		<level value="ERROR" />
 		<appender-ref ref="errorTrendApp" />
 	</logger>
 	<logger name="bigError">
-		<level value="DEBUG" />
+		<level value="ERROR" />
 		<appender-ref ref="bigErrorApp" />
 	</logger>
 	<logger name="rateSwitch">
@@ -156,11 +156,11 @@
 		<appender-ref ref="etl" />
 	</logger>
 	<logger name="org.steamshaper.ai.prediction.APrediction">
-		<level value="DEBUG" />
+		<level value="ERROR" />
 		<appender-ref ref="prediction-log" />
 	</logger>
 	<logger name="org.steamshaper.ai.runtime.puffafilm">
-		<level value="DEBUG" />
+		<level value="ERROR" />
 		<appender-ref ref="start-log" />
 	</logger>
 	<logger name="org.mortbay.log">
@@ -168,20 +168,20 @@
 		<appender-ref ref="mortbay" />
 	</logger>
 	<logger name="service">
-		<level value="DEBUG" />
+		<level value="ERROR" />
 		<appender-ref ref="services-log" />
 		<appender-ref ref="console" />
 	</logger>
 	<logger name="org.steamshaper">
-		<level value="DEBUG" />
+		<level value="ERROR" />
 		<appender-ref ref="steamshaper-log" />
 	</logger>
 	<logger name="RateBasePrediction">
-		<level value="DEBUG" />
+		<level value="ERROR" />
 		<appender-ref ref="RateBasePrediction-appender" />
 	</logger>
 	<logger name="service.impl.GraphEntityCreator">
-		<level value="INFO" />
+		<level value="ERROR" />
 		<appender-ref ref="db-loading-service" />
 		<appender-ref ref="console" />
 	</logger>
