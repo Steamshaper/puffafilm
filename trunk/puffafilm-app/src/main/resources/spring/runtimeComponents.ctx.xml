@@ -127,7 +127,7 @@
 	<bean id="db-should-be-loaded" class="org.steamshaper.ai.runtime.service.Condition">
 		<property name="name" value="Conditional block" />
 		<property name="conditionQuestion" value="Should load data on DB?" />
-		<property name="conditionDefault" value="false" />
+		<property name="conditionDefault" value="true" />
 	</bean>
 	<bean id="webadmin-should-be-loaded" class="org.steamshaper.ai.runtime.service.Condition">
 		<property name="name" value="Conditional block" />
@@ -137,6 +137,6 @@
 	<bean id="db-should-be-deleted" class="org.steamshaper.ai.runtime.service.Condition">
 		<property name="name" value="Conditional block" />
 		<property name="conditionQuestion" value="Should delete DB data files?" />
-		<property name="conditionDefault" value="false" />
+		<property name="conditionDefault" value="true" />
 	</bean>
 </beans>

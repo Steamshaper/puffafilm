@@ -29,7 +29,7 @@ public class Puffafilm {
         log.info("Attempt to initializing Spring Contexts DONE "+contexts);
 
         ServiceRunner runner = new ServiceRunner();
-        KnowledgeExtractor.getInstance().setDatFileHomePath(System.getProperty("user.dir")+"/test-dataset-3/");
+        KnowledgeExtractor.getInstance().setDatFileHomePath(System.getProperty("user.dir")+"/dataset/");
         runner.goGoGo();
         log.info("Application exit!");
         System.exit(0);
