@@ -4,9 +4,13 @@ The Puffafilm - Motore di Raccomandazione Film
 Sistemi Intelligenti Per Internet
 --------------------------------------------------------
 Sommario:
+
 - Requisiti di sistema
+
 - Contenuto pacchetto
+
 - Istruzioni per l'utilizzo
+
 - Contatti
 
 
@@ -21,9 +25,13 @@ Java SE 1.6
 Contenuto pacchetto: puffafilm.zip
 --------------------------------------------------------
 Il pacchetto contiene:
+
  - il jar del progetto: puffafilm-app-1.0.0.jar
+
  - lo zip contenente i javadoc: javadoc.zip
+
  - la cartella contenente i settaggi dei vari appender : logging
+
  - la cartella contenente il training set: dataset
 
 
@@ -50,8 +58,11 @@ come definito dalle specifiche di progetto
 
 AGGIUNGENDO COME ARGOMENTO interactive , L'APPLICAZIONE
 CHIEDE ALL'UTENTE SE COMPIERE O MENO DETERMINATE AZIONI
+
 - ETL DEI DATI : DEFAULT E NON INTERACTIVE [TRUE]
+
 - WEB ADMIN INTERFACE : DEFAULT E NON INTERACTIVE [TRUE]
+
 - RIMOZIONE DEL DB ALL'USCITA : DEFAULT E NON INTERACTIVE [TRUE]
 
 
