@@ -86,14 +86,19 @@ public class MultipleApproximationPrediction extends APrediction {
 		tt.timerStart("Ricerco regista del film");
 		// Recupero il regista del fiml
 		GNDirector director = gndRepo.getDirectorForMovie(thisMovie);
-		log.debug(tt.timerStop(director.getDescription()));
-
-		// Se l'utente ha votato qualche film del regista ne calcolo la media
-		// altrimenti lo valorizzo con il valor medio dell'utente
-		tt.timerStart("gndRepo.getAvgForDirector(thisUser, director);");
-		Float avgForDirector = gndRepo.getAvgForDirector(thisUser, director);
-		avgForDirector = avgForDirector == null ? thisUserAvg : avgForDirector;
-		log.debug(tt.timerStop());
+		Float avgForDirector = -1f;
+		if(director!=null){
+			log.debug(tt.timerStop(director.getDescription()));
+	
+			// Se l'utente ha votato qualche film del regista ne calcolo la media
+			// altrimenti lo valorizzo con il valor medio dell'utente
+			tt.timerStart("gndRepo.getAvgForDirector(thisUser, director);");
+			avgForDirector = gndRepo.getAvgForDirector(thisUser, director);
+			avgForDirector = avgForDirector == null ? thisUserAvg : avgForDirector;
+			log.debug(tt.timerStop());
+		}else{
+			log.debug(tt.timerStop("Regista non associato al film"));
+		}
 		log.debug(tt.timerStop());
 
 		// DATI GENERI
@@ -153,12 +158,14 @@ public class MultipleApproximationPrediction extends APrediction {
 		temp = Math.abs(temp) > 0.51 ? temp : 0;
 		prediction += temp;
 
-		log.debug("Prediction update to \t" + prediction + "\t" + temp);
-		// Correggo la previsione con la media dell'utente per il regista del
-		// film
-		temp = reviewWithMagicFunction(startPrediction,
-				(double) avgForDirector);
-		prediction += temp;
+		if(avgForDirector>=0){
+			log.debug("Prediction update to \t" + prediction + "\t" + temp);
+			// Correggo la previsione con la media dell'utente per il regista del
+			// film
+			temp = reviewWithMagicFunction(startPrediction,
+					(double) avgForDirector);
+			prediction += temp;
+		}
 
 		// Prendo i generi associati al film e verifico sulle statistiche del
 		// film il voto medio

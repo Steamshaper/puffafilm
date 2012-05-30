@@ -51,7 +51,7 @@
 
 
 
-	<bean id="main-program" class="org.steamshaper.ai.runtime.service.MainService">
+	<bean id="main-program" class="org.steamshaper.ai.runtime.service.MainServiceWithMae">
 		<property name="name" value="MAIN PROGRAM"/>
 		<property name="dataInput" ref="input-data-loader"/>
 	</bean>
