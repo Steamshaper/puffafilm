@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import org.apache.log4j.Logger;
 import org.steamshaper.ai.prediction.APrediction;
 import org.steamshaper.ai.prediction.MultipleApproximationPrediction;
 import org.steamshaper.ai.puffafilm.util.Help;
@@ -15,9 +16,11 @@ public class MainServiceWithMae extends AService {
 	private DataLoader dataInput = null;
 	private List<String> outputRatingList =  new ArrayList<String>();
 	private List<String> expectedRatingList = new ArrayList<String>();
-
+	private final Logger log = Logger
+			.getLogger("outputLogger");
 	@Override
 	public void run() {
+		long y = 0;
 		if (getDataInput() != null) {
 			APrediction prediction = new MultipleApproximationPrediction();
 			Long userOid;
@@ -33,7 +36,7 @@ public class MainServiceWithMae extends AService {
 				outputRatingList.add(rating.toString());
 				Float error = rating-expected;
 				expectedRatingList.add(expected.toString()+"\t"+rating.toString()+"\t" + error.toString());
-				
+				log.info(expected.toString()+"\t"+rating.toString()+"\t" + error.toString()+"\t"+(y++));
 			}
 			produceOutput();
 			produceMaeOutput();

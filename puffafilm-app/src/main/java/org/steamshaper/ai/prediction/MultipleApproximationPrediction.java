@@ -73,6 +73,7 @@ public class MultipleApproximationPrediction extends APrediction {
 		tt.timerStart("Voto medio utente");
 		// Calcolo il voto medio del film e quindi anche del regista per il film
 		Float thisMovieAvg = gnmRepo.getAverageRateForMovie(thisMovie);
+		thisMovieAvg = thisMovieAvg!=null? thisMovieAvg:2.5F;
 		log.debug(tt.timerStop(thisMovieAvg));
 		tt.timerStart("Recupero lista dei film votati dall'utente");
 		// Trovo per ogni utente il voto che ha dato al film
